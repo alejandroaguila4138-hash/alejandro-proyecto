@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Kinder - Validado</title>
+    <style>
+        body { font-family: sans-serif; background-color: #fdf9f2; padding: 20px; }
+        form { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin: 5px 0 15px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        input[readonly] { background-color: #eee; cursor: not-allowed; }
+        button { background-color: #ff69b4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        .error-text { color: red; font-size: 12px; display: none; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center; color: #db2777;">Registro de Infante - Kinder</h2>
+    <form action="index.html" method="get">
+        
+        <label>Nombre del Infante:</label>
+        <input type="text" id="nombre" name="nombre_infante" required oninput="validarLetras(this)">
+        
+        <label>Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nac" name="fecha_nac" required onchange="calcularEdad()">
+        
+        <label>Edad:</label>
+        <input type="text" id="edad" name="edad" readonly placeholder="Cálculo automático">
+        <small id="error_edad" class="error-text">La edad debe ser entre 3 y 4 años.</small>
+
+        <label>Padre / Madre:</label>
+        <input type="text" name="tutor" placeholder="Nombre completo" oninput="validarLetras(this)">
+        
+        <label>Teléfono Celular:</label>
+        <input type="tel" id="telefono" name="tel" maxlength="12" placeholder="000-000-0000" required oninput="formatearTel(this)">
+        
+        <label>Municipio:</label>
+        <select name="municipio" required>
+            <option value="">Seleccione...</option>
+            <option value="Tepic">Tepic</option>
+            <option value="Santiago">Santiago Ixcuintla</option>
+            <option value="Xalisco">Xalisco</option>
+            <option value="Bahia">Bahía de Banderas</option>
+            </select>
+        
+        <button type="submit" id="btn_enviar">Registrar</button>
+        <br><br>
+        <center><a href="index.html">Regresar</a></center>
+    </form>
+
+    <script>
+        function validarLetras(input) {
+            input.value = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+        }
+
+        function formatearTel(input) {
+            let num = input.value.replace(/\D/g, '');
+            if (num.length > 10) num = num.substring(0, 10);
+            
+            let format = "";
+            if (num.length > 0) format += num.substring(0, 3);
+            if (num.length > 3) format += "-" + num.substring(3, 6);
+            if (num.length > 6) format += "-" + num.substring(6, 10);
+            input.value = format;
+        }
+
+        function calcularEdad() {
+            const fechaVal = document.getElementById("fecha_nac").value;
+            const campoEdad = document.getElementById("edad");
+            const btn = document.getElementById("btn_enviar");
+            const error = document.getElementById("error_edad");
+
+            if (fechaVal) {
+                const hoy = new Date();
+                const nac = new Date(fechaVal);
+                let edad = hoy.getFullYear() - nac.getFullYear();
+                const m = hoy.getMonth() - nac.getMonth();
+                if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) { edad--; }
+
+                campoEdad.value = edad + " años";
+
+                if (edad >= 3 && edad <= 4) {
+                    error.style.display = "none";
+                    btn.disabled = false;
+                } else {
+                    error.style.display = "block";
+                    btn.disabled = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

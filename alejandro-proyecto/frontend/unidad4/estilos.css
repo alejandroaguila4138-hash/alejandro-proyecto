@@ -1,0 +1,113 @@
+/* ===== ESTILOS EXAMEN UNIDAD 4 ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor {
+    background: white;
+    max-width: 650px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.subtitulo {
+    font-size: 1rem;
+    opacity: 0.85;
+}
+
+/* ===== SECCIONES ===== */
+section {
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+section h2 {
+    color: #2c3e50;
+    margin-bottom: 18px;
+    font-size: 1.2rem;
+    border-left: 4px solid #3498db;
+    padding-left: 12px;
+}
+
+/* ===== TABLA DE DATOS ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tr td {
+    padding: 10px 8px;
+    font-size: 0.95rem;
+    color: #444;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+table tr td:first-child {
+    width: 40%;
+    color: #666;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== MENSAJE PRINCIPAL ===== */
+.mensaje {
+    background-color: #f8fbff;
+}
+
+.mensaje p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.97rem;
+    margin-top: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    padding: 20px 30px;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}

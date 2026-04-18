@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>API ChatGPT</title>
+</head>
+<body>
+
+<h2>Chatgpt API</h2>
+
+<input type="text" id="msg" placeholder="Escribe tu pregunta">
+<button onclick="enviarChat()">Consultar</button>
+
+<p id="resp"></p>
+
+<script>
+async function enviarChat() {
+    const prompt = document.getElementById("msg").value;
+    const resp = document.getElementById("resp");
+
+    resp.innerText = "Pensando...";
+
+    try {
+        // Llama al backend, no a OpenAI directamente
+        const response = await fetch("/api/chatgpt", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            resp.innerText = "Error: " + JSON.stringify(data.error);
+            return;
+        }
+
+        resp.innerText = data.reply;
+
+    } catch (err) {
+        resp.innerText = "Error de conexión: " + err;
+    }
+}
+</script>
+
+<br>
+<a href="examen-unidad-2.html">ir a examen</a>
+
+</body>
+</html>

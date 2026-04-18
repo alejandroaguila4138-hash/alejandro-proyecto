@@ -16,8 +16,8 @@ app.use('/api/chatgpt', chatgptRoute);
 app.use('/api/gemini',  geminiRoute);
 
 // Servir archivos estáticos de cada unidad
-app.use('/Unidad2', express.static(path.join(__dirname, '../frontend/unidad2')));
-app.use('/Unidad4', express.static(path.join(__dirname, '../frontend/unidad4')));
+app.use('/Unidad2', express.static(path.join(__dirname, 'frontend/unidad2')));
+app.use('/Unidad4', express.static(path.join(__dirname, 'frontend/unidad4')));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

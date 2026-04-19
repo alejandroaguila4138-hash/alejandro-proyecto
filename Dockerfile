@@ -1,9 +1,5 @@
-FROM node:22-slim
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY server.js .
-COPY routes/ ./routes/
-COPY frontend/ ./frontend/
-EXPOSE 3000
-CMD ["node", "server.js"]
+FROM tomcat:9.0-jdk11-openjdk-slim
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+COPY webapp/ /usr/local/tomcat/webapps/ROOT/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]

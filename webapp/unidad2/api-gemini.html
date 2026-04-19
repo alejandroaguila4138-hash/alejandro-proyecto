@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Gemini</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -60,21 +61,19 @@
             outputDiv.innerHTML = '<span class="loading-text"><i class="fa-solid fa-circle-notch fa-spin"></i> Procesando consulta...</span>';
 
             try {
-                // Llama al backend, no a Google directamente
-                const response = await fetch('/api/gemini', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: pregunta })
-                });
-
+                // Llamamos a nuestro puente JSP seguro
+                const response = await fetch("controlador-gemini.jsp?pregunta=" + encodeURIComponent(pregunta));
+                
                 const data = await response.json();
 
-                if (!response.ok) {
-                    outputDiv.innerText = "Error: " + JSON.stringify(data.error);
+                // Verificamos si el JSP nos mandó un error
+                if (data.error) {
+                    outputDiv.innerText = "Error: " + data.error;
                     return;
                 }
 
-                outputDiv.innerText = data.reply;
+                // Extraemos la respuesta de la estructura de Google
+                outputDiv.innerText = data.candidates[0].content.parts[0].text;
                 document.getElementById('prompt').value = '';
 
             } catch (e) {
@@ -82,7 +81,7 @@
             }
         }
     </script>
-
-    <a href="examen-unidad-2.html">ir a examen</a>
+    <br>
+    <a href="examen-unidad-2.html" style="display:block; text-align:center; margin-top:15px;">ir a examen</a>
 </body>
 </html>

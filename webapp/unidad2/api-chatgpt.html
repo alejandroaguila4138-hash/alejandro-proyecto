@@ -17,24 +17,24 @@ async function enviarChat() {
     const prompt = document.getElementById("msg").value;
     const resp = document.getElementById("resp");
 
+    if (!prompt) return;
+
     resp.innerText = "Pensando...";
 
     try {
-        // Llama al backend, no a OpenAI directamente
-        const response = await fetch("/api/chatgpt", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt })
-        });
-
+        // Llamamos a nuestro puente JSP seguro enviando la pregunta en la URL
+        const response = await fetch("controlador-chatgpt.jsp?pregunta=" + encodeURIComponent(prompt));
+        
         const data = await response.json();
 
-        if (!response.ok) {
-            resp.innerText = "Error: " + JSON.stringify(data.error);
+        // Verificamos si el JSP nos mandó un error (ej. falta la API Key)
+        if (data.error) {
+            resp.innerText = "Error: " + data.error;
             return;
         }
 
-        resp.innerText = data.reply;
+        // Extraemos la respuesta exacta de la estructura de OpenAI
+        resp.innerText = data.choices[0].message.content;
 
     } catch (err) {
         resp.innerText = "Error de conexión: " + err;

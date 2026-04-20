@@ -2,7 +2,7 @@
 <%@ page import="java.io.*, java.net.*, java.nio.charset.StandardCharsets" %>
 <%
     // 1. Buscamos la variable de entorno específica para ChatGPT
-    String apiKey = System.getenv("CHATGPT_API_KEY");
+    String apiKey = System.getProperty("CHATGPT_API_KEY");
 
     if (apiKey == null || apiKey.isEmpty()) {
         response.setStatus(500);

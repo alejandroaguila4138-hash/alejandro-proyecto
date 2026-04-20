@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.io.*, java.net.*, java.nio.charset.StandardCharsets" %>
 <%
-  String apiKey = System.getProperty("GEMINI_API_KEY");
+  String apiKey = System.getenv("GEMINI_API_KEY");
 
     if (apiKey == null || apiKey.isEmpty()) {
         response.setStatus(500);

@@ -20,6 +20,8 @@
     <form action="registro-validacion.jsp" method="POST">
         <input type="number" name="edad" placeholder="" required min="1" max="120">
         <button type="submit">Validar Registro</button>
+
+        <a href="index.jsp">Regresar</a>
     </form>
 </div>
 </body>

@@ -22,7 +22,7 @@
         <h2 style="color:blue;">Multiplicación de double y float</h2>
         <h3 style="color:green;">double: a = <%=a%> * <%=b%> = <%=c%></h3>
         <h3 style="color:green;">float: m = <%=m%> * <%=n%> = <%=p%></h3>
-        <a href="index.jsp">Volver al índice de la unidad 3</a>
+        <a href="index.jsp">Regresar</a>
     </center>
 </body>
 </html>

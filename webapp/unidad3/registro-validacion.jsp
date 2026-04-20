@@ -52,6 +52,7 @@
     <%-- CORREGIDO: era .html, debe ser .jsp --%>
     <a href="registro-universidad.jsp" class="btn-back">Volver a intentar</a>
 </div>
-
+                      
+     <center> <a href="index.jsp">Regresar</a> </center> 
 </body>
 </html>

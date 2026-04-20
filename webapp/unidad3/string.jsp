@@ -20,7 +20,7 @@
         <p><%= siglo %></p>
         <p><%= mes %></p>
         <p><%= anio %></p>
-        <a href="index.jsp">Volver al índice de la unidad 3</a>
+        <a href="index.jsp">Regresae</a>
     </center>
 </body>
 </html>

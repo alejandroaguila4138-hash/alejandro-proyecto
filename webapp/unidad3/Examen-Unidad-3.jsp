@@ -77,6 +77,7 @@
 
     <br>
     <button onclick="location.href='index.jsp'">Regresar</button>
-
+      
+    <center> <a href="index.jsp">Regresar</a></center>
 </body>
 </html>

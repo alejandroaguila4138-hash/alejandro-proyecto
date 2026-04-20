@@ -22,7 +22,7 @@
     <a href="registro-universidad.jsp">11.- Ingresar Alumno</a><br><br>
     <a href="registro-validacion.jsp">12.- Validar Alumno</a><br><br>
     <a href="Examen-Unidad-3.jsp">16. Examen U3</a><br><br>
-    <a href="../index.html">25. Regresar al Inicio General</a><br>
+    <a href="../index.html">25. ir a inicio</a><br>
    </center>
 </body>
 </html>

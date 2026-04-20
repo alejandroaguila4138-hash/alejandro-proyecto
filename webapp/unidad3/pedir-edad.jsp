@@ -19,7 +19,7 @@
         </tr>
     </table>
     </form>
-    <a href="index.jsp">Volver al índice de la unidad 3</a><br><br>
+   <a href="index.jsp">Regresar</a>
 </center>
 </body>
 </html>

@@ -15,7 +15,7 @@
 %>
 <center>
     <h2>La suma de <%= x %> + <%= y %> + <%= z %> es igual a: <%= suma %></h2>
-    <a href="index.jsp">Volver al índice de la unidad 3</a>
+    <a href="index.jsp">Regresar</a>
 </center>
 </body>
 </html>
